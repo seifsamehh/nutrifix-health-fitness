@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #f3f3f3;
+    --foreground: #015a6a;
+
+    --card: #06584e;
+    --card-foreground: #f3f3f3;
+
+    --popover: #015a6a;
+    --popover-foreground: #f3f3f3;
+
+    --primary: #f6c445;
+    --primary-foreground: #010101;
+
+    --secondary: #80daeb;
+    --secondary-foreground: #010101;
+
+    --muted: #4c4c4c;
+    --muted-foreground: #f3f3f3;
+
+    --accent: #67ddab;
+    --accent-foreground: #010101;
+
+    --destructive: #ad1a1a;
+    --destructive-foreground: #f3f3f3;
+
+    --border: #80daeb;
+    --input: #015a6a;
+    --ring: #015a6a;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: #015a6a;
+    --foreground: #f3f3f3;
+
+    --card: #f3f3f3;
+    --card-foreground: #06584e;
+
+    --popover: #f3f3f3;
+    --popover-foreground: #015a6a;
+
+    --primary: #f6c445;
+    --primary-foreground: #010101;
+
+    --secondary: #80daeb;
+    --secondary-foreground: #010101;
+
+    --muted: #f3f3f3;
+    --muted-foreground: #4c4c4c;
+
+    --accent: #67ddab;
+    --accent-foreground: #010101;
+
+    --destructive: #ad1a1a;
+    --destructive-foreground: #f3f3f3;
+
+    --border: #80daeb;
+    --input: #015a6a;
+    --ring: #015a6a;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* global components */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body,
+section {
+  overflow-x: hidden;
+}
+a,
+img,
+video,
+button,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+span {
+  user-select: none;
+}
+::selection {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+a {
+  text-decoration: none;
+}
+button {
+  border: none;
+  outline: none;
+}
+
+/* Loader */
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.overlay {
+  width: 100%;
+  height: 100vh;
+}
+
+.block {
+  position: fixed;
+  width: 5%;
+  height: 100vh;
+}
+
+.block-1 {
+  left: 0;
+}
+
+.block-2 {
+  left: 5%;
+}
+
+.block-3 {
+  left: 10%;
+}
+
+.block-4 {
+  left: 15%;
+}
+
+.block-5 {
+  left: 20%;
+}
+
+.block-6 {
+  left: 25%;
+}
+
+.block-7 {
+  left: 30%;
+}
+
+.block-8 {
+  left: 35%;
+}
+
+.block-9 {
+  left: 40%;
+}
+
+.block-10 {
+  left: 45%;
+}
+
+.block-11 {
+  left: 50%;
+}
+
+.block-12 {
+  left: 55%;
+}
+
+.block-13 {
+  left: 60%;
+}
+
+.block-14 {
+  left: 65%;
+}
+
+.block-15 {
+  left: 70%;
+}
+
+.block-16 {
+  left: 75%;
+}
+
+.block-17 {
+  left: 80%;
+}
+
+.block-18 {
+  left: 85%;
+}
+
+.block-19 {
+  left: 90%;
+}
+
+.block-20 {
+  left: 95%;
+}
+
+/* Toast */
+
+.light .toast {
+  background-color: var(--popover) !important;
+  color: var(--popover-foreground) !important;
+}
+
+.dark .toast {
+  background-color: var(--popover-foreground) !important;
+  color: var(--popover) !important;
+}
+
+.process-content svg,
+footer svg {
+  transform: translate(0) !important;
+}
+
+.bg-layers {
+  -webkit-animation: filter-animation 4s infinite;
+  animation: filter-animation 4s infinite;
+}
+
+.bg-scale {
+  -webkit-animation: filter-animation 8s infinite;
+  animation: filter-scale 8s infinite;
+}
+
+@-webkit-keyframes filter-animation {
+  0% {
+    -webkit-filter: hue-rotate(0deg);
+  }
+  50% {
+    -webkit-filter: hue-rotate(45deg);
+  }
+
+  100% {
+    -webkit-filter: hue-rotate(0deg);
+  }
+}
+
+@keyframes filter-animation {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    filter: hue-rotate(45deg);
+  }
+  100% {
+    filter: hue-rotate(0deg);
+  }
+}
+
+@keyframes filter-scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
