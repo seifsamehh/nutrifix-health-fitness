@@ -1,15 +1,15 @@
 "use client";
 
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Quote } from "@/interfaces/Quote";
 
 export default function Notification(): JSX.Element | null {
+  const [onlineQuotes, setOnlineQuotes] = useState<Quote[]>([]);
+
   const requestNotificationPermission = useCallback(async () => {
     try {
       if ("Notification" in window) {
-        const permission = await (
-          window as any
-        ).Notification.requestPermission();
+        const permission = await window.Notification.requestPermission();
         if (permission === "granted") {
           console.log("Notification permission granted.");
         }
@@ -22,14 +22,28 @@ export default function Notification(): JSX.Element | null {
     }
   }, []);
 
+  const fetchOnlineQuotes = useCallback(async () => {
+    try {
+      // Fetch quotes from your API
+      const response = await fetch("https://type.fit/api/quotes");
+      if (!response.ok) {
+        throw new Error("Failed to fetch online quotes");
+      }
+      const data = await response.json();
+      setOnlineQuotes(data.quotes); // Assuming your API response has a 'quotes' property
+    } catch (error) {
+      console.error("Error fetching online quotes:", error);
+    }
+  }, []);
+
   const showNotification = useCallback((quotes: Quote[]) => {
     if (
       "Notification" in window &&
-      (window as any).Notification.permission === "granted"
+      window.Notification.permission === "granted"
     ) {
       const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
       if (randomQuote) {
-        new (window as any).Notification(randomQuote.author, {
+        new window.Notification(randomQuote.author, {
           body: randomQuote.text,
           icon: "https://res.cloudinary.com/dp9iqarvw/image/upload/v1709493050/NutriFix/maskable_icon_skhdbk.png",
         });
@@ -54,7 +68,6 @@ export default function Notification(): JSX.Element | null {
         "The mind and body are not separate . What affects one , affects the other.",
         "You are the only one who can limit your greatness.",
         "Take care of your body . it's the only place you have to live.",
-        "Come back we miss you.",
       ];
       const randomMessage =
         offlineMessages[Math.floor(Math.random() * offlineMessages.length)];
@@ -62,13 +75,13 @@ export default function Notification(): JSX.Element | null {
 
       if (event.type === "offline") {
         showNotification([{ author: "NutriFix", text: randomMessage }]);
+      } else if (event.type === "online") {
+        fetchOnlineQuotes();
       }
     };
 
     const interval = setInterval(() => {
-      // Fetch quotes from API or local storage
-      const quotes: Quote[] = []; // Fetch or generate quotes
-      showNotification(quotes);
+      showNotification(onlineQuotes);
     }, 1000 * 60 * 15); // Send notification every 15 minutes
 
     requestNotificationPermission();
@@ -80,7 +93,12 @@ export default function Notification(): JSX.Element | null {
       window.removeEventListener("online", handleOnlineOffline);
       window.removeEventListener("offline", handleOnlineOffline);
     };
-  }, [requestNotificationPermission, showNotification]);
+  }, [
+    fetchOnlineQuotes,
+    onlineQuotes,
+    requestNotificationPermission,
+    showNotification,
+  ]);
 
   return null;
 }
