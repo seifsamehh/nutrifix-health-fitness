@@ -42,10 +42,10 @@ export function DrawerDemo() {
             </div>
             <DrawerFooter>
               <Button asChild>
-                <LoginLink postLoginRedirectURL="/home-page">Sign in</LoginLink>
+                <LoginLink postLoginRedirectURL="/home">Sign in</LoginLink>
               </Button>
               <Button asChild variant="outline">
-                <RegisterLink postLoginRedirectURL="/home-page">
+                <RegisterLink postLoginRedirectURL="/home">
                   Sign up
                 </RegisterLink>
               </Button>
