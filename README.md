@@ -12,7 +12,6 @@ Elevate your fitness journey with NutriFix! Access tailored workout plans, perso
 - Light/dark mode toggle
 - Workout planner powered by AI
 - Diet planner powered by AI
-- Calories Estimation powered by AI
 - Notifications
 - Parallax effects
 
