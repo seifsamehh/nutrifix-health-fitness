@@ -16,7 +16,10 @@ export default function page() {
           data-min-height="500px"
           data-form-id="50544"
         ></div>
-        <Script src="https://static-bundles.visme.co/forms/vismeforms-embed.js"></Script>
+        <Script
+          src="https://static-bundles.visme.co/forms/vismeforms-embed.js"
+          async
+        ></Script>
       </section>
       <Footer />
     </>
