@@ -1,6 +1,5 @@
 import { getStrapiData } from "@/data/StrapiData";
 import localFont from "next/font/local";
-import { toast } from "sonner";
 
 // Amulya font
 const amulya = localFont({
@@ -100,6 +99,5 @@ export default async function ProcessContent() {
     if (process.env.NODE_ENV !== "production") {
       console.error(error);
     }
-    toast.error("Failed to fetch landing page content");
   }
 }

@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { getStrapiData } from "@/data/StrapiData";
-import { toast } from "sonner";
 import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import localFont from "next/font/local";
 
@@ -36,7 +35,5 @@ export default async function HeroBtn() {
     if (process.env.NODE_ENV !== "production") {
       console.error(error); //! Use console.error for logging errors
     }
-
-    toast.error("Failed to fetch data. Please try again later.");
   }
 }

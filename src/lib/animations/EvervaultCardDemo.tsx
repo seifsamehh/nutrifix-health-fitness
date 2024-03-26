@@ -1,7 +1,6 @@
 import { getStrapiData } from "@/data/StrapiData";
 import { EvervaultCard, Icon } from "@/components/ui/evervault-card";
 import { Badge } from "@/components/ui/badge";
-import { toast } from "sonner";
 
 export async function EvervaultCardDemo() {
   const path = "/api/landing-page";
@@ -37,7 +36,6 @@ export async function EvervaultCardDemo() {
     if (process.env.NODE_ENV !== "production") {
       console.error(error);
     }
-    toast.error("Failed to fetch data. Please try again later.");
   }
   return null;
 }

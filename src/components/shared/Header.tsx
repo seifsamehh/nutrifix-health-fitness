@@ -4,6 +4,7 @@ import { ModeToggle } from "@/lib/animations/ModeToggle";
 import { DrawerDemo } from "@/lib/DrawerDemo";
 
 import localFont from "next/font/local";
+import Link from "next/link";
 
 // Amulya font
 const amulya = localFont({
@@ -21,11 +22,14 @@ export default function Header() {
   return (
     <header className="flex justify-between items-center py-4 px-8">
       <div className="left">
-        <p
+        <Link
+          href={"/"}
+          title="NutriFix"
+          aria-label="NutriFix"
           className={`${amulya.className} text-4xl bg-gradient-to-r from-[#015a6a] to-[#67ddab] dark:from-[#80daeb] dark:to-[#67ddab] inline-block text-transparent bg-clip-text`}
         >
           NutriFix
-        </p>
+        </Link>
       </div>
       <div className="middle">
         <NavbarDemo />
