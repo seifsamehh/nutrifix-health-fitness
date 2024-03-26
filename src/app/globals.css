@@ -131,7 +131,6 @@ button {
   flex-direction: row;
   gap: 1em;
   overflow: hidden;
-  /* color: #f6f4f6; */
   opacity: 0;
 }
 .big-text {
