@@ -35,5 +35,16 @@ export default async function HeroBtn() {
     if (process.env.NODE_ENV !== "production") {
       console.error(error); //! Use console.error for logging errors
     }
+
+    return (
+      <Button asChild className="mt-12">
+        <LoginLink
+          postLoginRedirectURL="/home"
+          className={`${amulya.className} text-xl bg-primary text-primary-foreground w-48`}
+        >
+          Join Us
+        </LoginLink>
+      </Button>
+    );
   }
 }
