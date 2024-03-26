@@ -1,31 +1,26 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
-import "./globals.css";
-import { Parallax } from "@/hooks/useParallaxAnimation";
 import Script from "next/script";
+import dynamic from "next/dynamic";
+const ConsentCookies = dynamic(
+  () => import("@/components/shared/ConsentCookies")
+);
+
+import { Parallax } from "@/hooks/useParallaxAnimation";
 import { WebsiteData } from "@/interfaces/websiteData";
 import Preloader from "@/components/shared/Preloader";
 import { ThemeProvider } from "@/config/theme-provider";
 import CrispChat from "@/components/shared/CrispChat";
 import { Toaster } from "@/components/ui/sonner";
 import Notification from "@/components/shared/Notification";
-import ConsentCookies from "@/components/shared/ConsentCookies";
+import "./globals.css";
+
+import localFont from "next/font/local";
 
 // Synonym font
 const synonym = localFont({
   src: [
     {
       path: "../../public/fonts/Synonym/Synonym-Regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/Synonym/Synonym-Regular.woff",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/Synonym/Synonym-Regular.ttf",
       weight: "400",
       style: "normal",
     },
@@ -186,7 +181,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  category: "Health",
+  category: "Health & Fitness",
 };
 
 const website: WebsiteData = {
@@ -215,7 +210,8 @@ const website: WebsiteData = {
   industry: "Fitness & Health",
   socialMedia: {
     github: "https://github.com/seifsamehh",
-    linkedin: "https://www.linkedin.com/in/seif-eldin-sameh-81b8661b7/",
+    linkedin:
+      "https://www.linkedin.com/in/seif-eldin-sameh-fullstack-developer/",
   },
 };
 
@@ -225,6 +221,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const structuredData = JSON.stringify(website);
+  const sanitizedStructuredData = structuredData
+    .replace(/<\/script/g, "<\\/script")
+    .replace(/<!--/g, "<\\!--");
   return (
     <html lang="en">
       <body className={synonym.className}>
@@ -239,7 +238,7 @@ export default function RootLayout({
         <Script
           id="structure-data"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: structuredData }}
+          dangerouslySetInnerHTML={{ __html: sanitizedStructuredData }}
           defer
         />
       </body>

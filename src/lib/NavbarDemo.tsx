@@ -10,7 +10,7 @@ import { cn } from "./utils";
 
 export function NavbarDemo() {
   return (
-    <div className="relative w-full flex items-center justify-center min-[290px]:hidden md:block">
+    <div className="relative w-full flex items-center justify-center min-[290px]:hidden xl:block">
       <Navbar className="top-2" />
     </div>
   );

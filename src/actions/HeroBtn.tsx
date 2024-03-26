@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import { getStrapiData } from "@/data/StrapiData";
+import { toast } from "sonner";
 import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import localFont from "next/font/local";
 
@@ -6,33 +8,35 @@ import localFont from "next/font/local";
 const amulya = localFont({
   src: [
     {
-      path: "../../public/fonts/Amulya/Amulya-Bold.ttf",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/Amulya/Amulya-Bold.woff",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/Amulya/Amulya-Bold.ttf",
-      weight: "700",
+      path: "../../public/fonts/Amulya/Amulya-Bold.woff2",
       style: "normal",
     },
   ],
+  weight: "700",
   display: "swap",
 });
 
-export default function HeroBtn() {
-  return (
-    <Button asChild className="mt-12">
-      <LoginLink
-        postLoginRedirectURL="/home"
-        className={`${amulya.className} text-xl bg-primary text-primary-foreground w-48`}
-      >
-        Join Us
-      </LoginLink>
-    </Button>
-  );
+export default async function HeroBtn() {
+  const path = "/api/landing-page";
+  try {
+    const data = await getStrapiData(path);
+    const linkText = data?.blocks?.[0]?.link?.text || "Join Us"; //* Default value as part of data fetching
+
+    return (
+      <Button asChild className="mt-12">
+        <LoginLink
+          postLoginRedirectURL="/home"
+          className={`${amulya.className} text-xl bg-primary text-primary-foreground w-48`}
+        >
+          {linkText}
+        </LoginLink>
+      </Button>
+    );
+  } catch (error) {
+    if (process.env.NODE_ENV !== "production") {
+      console.error(error); //! Use console.error for logging errors
+    }
+
+    toast.error("Failed to fetch data. Please try again later.");
+  }
 }

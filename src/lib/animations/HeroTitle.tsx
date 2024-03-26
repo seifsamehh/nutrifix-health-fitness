@@ -1,5 +1,7 @@
 "use client";
 
+import { getStrapiData } from "@/data/StrapiData";
+import { useEffect, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,16 +13,6 @@ const amulya = localFont({
   src: [
     {
       path: "../../../public/fonts/Amulya/Amulya-Bold.woff2",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/Amulya/Amulya-Bold.woff",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../../../public/fonts/Amulya/Amulya-Bold.ttf",
       weight: "700",
       style: "normal",
     },
@@ -43,11 +35,23 @@ export default function HeroTitle() {
       },
     });
   });
+
+  // data fetching
+  const [title, setTitle] = useState("");
+
+  useEffect(() => {
+    async function fetchData() {
+      const strapiData = await getStrapiData("/api/landing-page");
+      const heading = strapiData.blocks[0]?.Heading || "";
+      setTitle(heading);
+    }
+    fetchData();
+  }, []);
   return (
     <h1
       className={`${amulya.className} min-[290px]:text-4xl md:text-8xl capitalize`}
     >
-      NutriFix creates the future of health & fitness services
+      {title || "NutriFix creates the future of health & fitness services"}
     </h1>
   );
 }

@@ -24,16 +24,6 @@ const amulya = localFont({
       weight: "700",
       style: "normal",
     },
-    {
-      path: "../../../../public/fonts/Amulya/Amulya-Bold.woff",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../../../../public/fonts/Amulya/Amulya-Bold.ttf",
-      weight: "700",
-      style: "normal",
-    },
   ],
   display: "swap",
 });

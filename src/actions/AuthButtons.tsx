@@ -3,18 +3,29 @@ import {
   RegisterLink,
   LoginLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
+import { LogIn } from "lucide-react";
 
-export default function AuthButtons() {
+const AuthButtons = () => {
+  const signInButton = (
+    <LoginLink postLoginRedirectURL="/home">
+      Sign in
+      <LogIn className="ml-2" />
+    </LoginLink>
+  );
+  const signUpButton = (
+    <RegisterLink postLoginRedirectURL="/home">Sign up</RegisterLink>
+  );
+
   return (
     <div className="auth-btns">
-      <div className="md:flex justify-center items-center gap-2 min-[290px]:hidden">
-        <Button asChild>
-          <LoginLink postLoginRedirectURL="/home">Sign in</LoginLink>
-        </Button>
+      <div className="xl:flex justify-center items-center gap-2 min-[290px]:hidden">
+        <Button asChild>{signInButton}</Button>
         <Button asChild variant="outline">
-          <RegisterLink postLoginRedirectURL="/home">Sign up</RegisterLink>
+          {signUpButton}
         </Button>
       </div>
     </div>
   );
-}
+};
+
+export default AuthButtons;

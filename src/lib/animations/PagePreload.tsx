@@ -2,41 +2,76 @@
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import localFont from "next/font/local";
+
+// Amulya font
+const amulya = localFont({
+  src: [
+    {
+      path: "../../../public/fonts/Amulya/Amulya-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  display: "swap",
+});
 
 export default function PagePreload() {
   useGSAP(() => {
-    gsap.to(".block", {
-      duration: 1.5, // Faster animation
-      width: "0%",
-      ease: "power1.in",
-      delay: 1, // Shortened delay,
-      stagger: 0.2, // Add stagger to animate each block one after another
-    });
+    const tl = gsap.timeline();
+
+    tl.to("body", {
+      overflow: "hidden",
+    })
+      .to(".preloader .text-container", {
+        duration: 0,
+        opacity: 1,
+
+        ease: "Power3.easeOut",
+      })
+      .from(".preloader .text-container h1", {
+        duration: 1.5,
+        delay: 0.2,
+        y: 200,
+        skewY: 10,
+        stagger: 0.4,
+
+        ease: "Power3.easeOut",
+      })
+      .to(".preloader .text-container h1", {
+        duration: 1.2,
+        y: 200,
+        skewY: -20,
+        stagger: 0.2,
+
+        ease: "Power3.easeOut",
+      })
+      .to(".preloader", {
+        duration: 1,
+
+        height: "0vh",
+        ease: "Power3.easeOut",
+      })
+      .to(
+        "body",
+        {
+          overflow: "auto",
+        },
+        "-=1"
+      )
+      .to(".preloader", {
+        display: "none",
+      });
   });
   return (
-    <div className="loading">
-      <div className="overlay">
-        <div className="block block-1 bg-foreground"></div>
-        <div className="block block-2 bg-foreground"></div>
-        <div className="block block-3 bg-foreground"></div>
-        <div className="block block-4 bg-foreground"></div>
-        <div className="block block-5 bg-foreground"></div>
-        <div className="block block-6 bg-foreground"></div>
-        <div className="block block-7 bg-foreground"></div>
-        <div className="block block-8 bg-foreground"></div>
-        <div className="block block-9 bg-foreground"></div>
-        <div className="block block-10 bg-foreground"></div>
-        <div className="block block-11 bg-foreground"></div>
-        <div className="block block-12 bg-foreground"></div>
-        <div className="block block-13 bg-foreground"></div>
-        <div className="block block-14 bg-foreground"></div>
-        <div className="block block-15 bg-foreground"></div>
-        <div className="block block-16 bg-foreground"></div>
-        <div className="block block-17 bg-foreground"></div>
-        <div className="block block-18 bg-foreground"></div>
-        <div className="block block-19 bg-foreground"></div>
-        <div className="block block-20 bg-foreground"></div>
+    <section className="loading-screen">
+      <div className="preloader bg-foreground">
+        <div className="text-container text-background">
+          <h1 className={`${amulya.className} big-text`}>NutriFix</h1>
+          <h1 className={`${amulya.className} big-text`}>Health</h1>
+          <h1 className={`${amulya.className} big-text`}>Fitness</h1>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

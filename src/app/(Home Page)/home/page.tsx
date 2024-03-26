@@ -1,24 +1,14 @@
 import dynamic from "next/dynamic";
-import SkeletonLoader from "@/components/shared/SkeletonLoader";
 
 const HeaderHome = dynamic(() => import("@/components/shared/HeaderHome"));
 const Welcome = dynamic(
-  () => import("@/components/home page/welcome message/Welcome"),
-  {
-    loading: () => <SkeletonLoader />,
-  }
+  () => import("@/components/home page/welcome message/Welcome")
 );
 const Categories = dynamic(
-  () => import("@/components/home page/categories/Categories"),
-  {
-    loading: () => <SkeletonLoader />,
-  }
+  () => import("@/components/home page/categories/Categories")
 );
 const Companies = dynamic(
-  () => import("@/components/home page/companies/Companies"),
-  {
-    loading: () => <SkeletonLoader />,
-  }
+  () => import("@/components/home page/companies/Companies")
 );
 const FooterHome = dynamic(() => import("@/components/shared/FooterHome"));
 

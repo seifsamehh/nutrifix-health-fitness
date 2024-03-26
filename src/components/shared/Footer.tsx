@@ -1,13 +1,15 @@
 import Link from "next/link";
+import { useMemo } from "react";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
+  const currentYear = useMemo(() => new Date().getFullYear(), []);
+
   return (
-    <footer className="relative py-20 flex flex-col items-center bg-cyan-900 overflow-hidden md:py-40">
+    <footer className="relative py-20 flex flex-col items-center overflow-hidden md:py-40">
       <div className="relative z-[1] container m-auto px-6 md:px-12">
         <div className="m-auto md:w-10/12 lg:w-8/12 xl:w-6/12">
           <div className="flex flex-wrap items-center justify-between md:flex-nowrap">
-            <div className="w-full space-x-12 flex justify-center text-white sm:w-7/12 md:justify-start">
+            <div className="w-full space-x-12 flex justify-center text-white dark:text-black sm:w-7/12 md:justify-start">
               <ul className="list-disc list-inside space-y-8">
                 <li>
                   <Link
@@ -153,11 +155,11 @@ export default function Footer() {
               </ul>
             </div>
             <div className="w-10/12 m-auto  mt-16 space-y-6 text-center sm:text-left sm:w-5/12 sm:mt-auto">
-              <span className="text-white">
+              <span className="text-white dark:text-black">
                 NutriFix change the concept of fitness & health &copy;{" "}
                 {currentYear}
               </span>
-              <span className="flex justify-between text-white">
+              <span className="flex justify-between text-white dark:text-black">
                 <Link href="/terms" className="font-semibold">
                   Terms of Use{" "}
                 </Link>
@@ -170,19 +172,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div
-        aria-hidden="true"
-        className="absolute h-full inset-0 flex items-center"
-      >
-        <div
-          aria-hidden="true"
-          className="bg-layers bg-scale w-56 h-56 m-auto blur-xl bg-gradient-to-r from-cyan-200 dark:from-cyan-600 via-blue-300 dark:via-blue-800 to-purple-400 dark:to-purple-700 rounded-full md:w-[30rem] md:h-[30rem] md:blur-3xl"
-        />
-      </div>
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 w-full h-full bg-foreground dark:bg-primary opacity-80"
-      />
     </footer>
   );
 }

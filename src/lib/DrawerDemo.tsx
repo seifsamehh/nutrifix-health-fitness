@@ -20,7 +20,7 @@ import {
 
 export function DrawerDemo() {
   return (
-    <div className="drawer-nav min-[290px]:block md:hidden">
+    <div className="drawer-nav min-[290px]:block xl:hidden">
       <Drawer>
         <DrawerTrigger asChild>
           <Button size="icon" title="menu" aria-label="menu">
@@ -30,8 +30,8 @@ export function DrawerDemo() {
         <DrawerContent>
           <div className="mx-auto w-full max-w-sm">
             <DrawerHeader>
-              <DrawerTitle>Daily Activity</DrawerTitle>
-              <DrawerDescription className="text-background">
+              <DrawerTitle className="text-center">Daily Activity</DrawerTitle>
+              <DrawerDescription className="text-foreground text-center">
                 Set your daily activity goal.
               </DrawerDescription>
             </DrawerHeader>
