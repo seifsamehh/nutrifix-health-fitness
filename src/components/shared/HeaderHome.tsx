@@ -2,8 +2,8 @@ import LogoutBtn from "@/actions/LogoutBtn";
 import { ModeToggle } from "@/lib/animations/ModeToggle";
 import UserImg from "@/lib/user/UserImg";
 
-import localFont from "next/font/local";
 import Link from "next/link";
+import localFont from "next/font/local";
 
 // Amulya font
 const amulya = localFont({

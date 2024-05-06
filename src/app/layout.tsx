@@ -9,7 +9,7 @@ import { Parallax } from "@/hooks/useParallaxAnimation";
 import { WebsiteData } from "@/interfaces/websiteData";
 import Preloader from "@/components/shared/Preloader";
 import { ThemeProvider } from "@/config/theme-provider";
-// import CrispChat from "@/components/shared/CrispChat";
+import CrispChat from "@/components/shared/CrispChat";
 
 import { Toaster } from "@/components/ui/sonner";
 import Notification from "@/components/shared/Notification";
@@ -234,10 +234,7 @@ export default function RootLayout({
           <Parallax>{children}</Parallax>
           <ConsentCookies />
         </ThemeProvider>
-        {/* <CrispChat /> */}
-        {/* <Chat chatbotID="QSd9YipFUv8jfo5n1YhKR" /> */}
-        <script>AIDBASE_CHATBOT_ID = `QSd9YipFUv8jfo5n1YhKR`;</script>
-
+        <CrispChat />
         <Toaster expand position="bottom-left" />
         <Script
           id="structure-data"
@@ -245,11 +242,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: sanitizedStructuredData }}
           defer
         />
-        <Script
-          async
-          type="text/javascript"
-          src="https://client.aidbase.ai/chat.ab.js"
-        ></Script>
       </body>
     </html>
   );

@@ -36,13 +36,12 @@ export const GoogleGeminiEffectDiet = ({
   return (
     <div className={cn("sticky top-80", className)}>
       <h1
-        className={`${amulya.className} text-lg md:text-7xl font-normal pb-4 text-center bg-clip-text text-transparent bg-gradient-to-b from-cyan-400 to-cyan-800 dark:to-cyan-100`}
+        className={`${amulya.className} text-3xl md:text-7xl font-normal pb-4 text-center bg-clip-text text-transparent bg-gradient-to-b from-cyan-400 to-cyan-800 dark:to-cyan-100`}
       >
         {title || `Diet Planner`}
       </h1>
-      <p className="text-xs md:text-xl font-normal text-center text-black dark:text-white mt-4 max-w-lg mx-auto">
-        {description ||
-          `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`}
+      <p className="text-lg md:text-xl font-normal text-center text-black dark:text-white mt-4 max-w-lg mx-auto">
+        {description || `Create your Diet plan and stay motivated.`}
       </p>
       <svg
         width="1440"
