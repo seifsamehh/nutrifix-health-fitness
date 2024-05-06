@@ -41,8 +41,7 @@ export const GoogleGeminiEffect = ({
         {title || `Workout Planner`}
       </h1>
       <p className="text-xs md:text-xl font-normal text-center text-black dark:text-white mt-4 max-w-lg mx-auto">
-        {description ||
-          `lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`}
+        {description || `Create your workout plan and stay motivated.`}
       </p>
       <svg
         width="1440"

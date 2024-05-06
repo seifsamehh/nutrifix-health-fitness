@@ -20,6 +20,11 @@ const amulya = localFont({
 
 const NotFound = React.memo(function NotFound() {
   const router = useRouter();
+
+  const handleGoBack = () => {
+    router.back();
+  };
+
   return (
     <main className="grid min-h-screen place-items-center bg-red-500 px-6 py-24 sm:py-32 lg:px-8">
       <div className="text-center">
@@ -33,18 +38,16 @@ const NotFound = React.memo(function NotFound() {
           Sorry, we couldn’t find the page you’re looking for.
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
-          <p
-            onClick={() => router.back()}
-            className="cursor-pointer rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+          <button
+            onClick={handleGoBack}
+            className="cursor-pointer rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-black shadow-sm focus:outline-none focus:ring-2 focus:ring-black"
           >
             Go back home
-          </p>
-          <Link
-            href="mailto:seiffsameh00@gmail.com"
-            target="_blank"
-            className="text-sm font-semibold text-white"
-          >
-            Contact support <span aria-hidden="true">&rarr;</span>
+          </button>
+          <Link href="mailto:seiffsameh00@gmail.com" target="_blank">
+            <a className="text-sm font-semibold text-white">
+              Contact support <span aria-hidden="true">&rarr;</span>
+            </a>
           </Link>
         </div>
       </div>

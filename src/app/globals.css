@@ -232,3 +232,11 @@ footer {
     ),
     linear-gradient(329deg, rgb(246, 196, 69), rgb(246, 196, 69));
 }
+
+.welcome {
+  background-image: url("/assets/nnnoise.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}

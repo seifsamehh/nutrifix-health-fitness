@@ -15,34 +15,32 @@ const amulya = localFont({
   display: "swap",
 });
 
+const defaultLinkText = "Join Us";
+
 export default async function HeroBtn() {
   const path = "/api/landing-page";
+  const buttonClassName = `${amulya.className} text-xl bg-primary text-primary-foreground w-48`;
+
   try {
     const data = await getStrapiData(path);
-    const linkText = data?.blocks?.[0]?.link?.text || "Join Us"; //* Default value as part of data fetching
+    const linkText = data?.blocks?.[0]?.link?.text || defaultLinkText;
 
     return (
       <Button asChild className="mt-12">
-        <LoginLink
-          postLoginRedirectURL="/home"
-          className={`${amulya.className} text-xl bg-primary text-primary-foreground w-48`}
-        >
+        <LoginLink postLoginRedirectURL="/home" className={buttonClassName}>
           {linkText}
         </LoginLink>
       </Button>
     );
   } catch (error) {
     if (process.env.NODE_ENV !== "production") {
-      console.error(error); //! Use console.error for logging errors
+      console.error(error);
     }
 
     return (
       <Button asChild className="mt-12">
-        <LoginLink
-          postLoginRedirectURL="/home"
-          className={`${amulya.className} text-xl bg-primary text-primary-foreground w-48`}
-        >
-          Join Us
+        <LoginLink postLoginRedirectURL="/home" className={buttonClassName}>
+          {defaultLinkText}
         </LoginLink>
       </Button>
     );

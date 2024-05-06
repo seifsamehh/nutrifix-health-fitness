@@ -1,14 +1,16 @@
+import HeaderHome from "@/components/shared/HeaderHome";
 import { GoogleGeminiEffectDemo } from "@/lib/animations/GoogleGeminiEffectDemo";
-import dynamic from "next/dynamic";
-
-const HeaderHome = dynamic(() => import("@/components/shared/HeaderHome"));
-const FooterHome = dynamic(() => import("@/components/shared/FooterHome"));
+import FooterHome from "@/components/shared/FooterHome";
+import WorkoutForm from "@/components/home page/categories/workout/WorkoutForm";
 
 export default function page() {
   return (
     <>
       <HeaderHome />
-      <GoogleGeminiEffectDemo />
+      <main className="workout">
+        <GoogleGeminiEffectDemo />
+        <WorkoutForm />
+      </main>
       <FooterHome />
     </>
   );

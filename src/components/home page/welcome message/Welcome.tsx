@@ -33,19 +33,20 @@ export default function Welcome() {
 
   if (isLoading)
     return (
-      <p className="className={`${suavity.className} text-[15rem]`}">
+      <p className={`${suavity.className} text-[10rem] text-center`}>
         Mr/Mrs..
       </p>
     );
+
   return (
-    <section className="welcome min-h-screen flex justify-center items-center flex-col leading-[5rem]">
+    <section className="welcome min-h-screen flex justify-center items-center flex-col leading-[5rem] relative">
       <h1
         className={`${amulya.className} min-[290px]:text-5xl md:text-9xl text-center`}
       >
         Welcome to NutriFix
       </h1>
       <p
-        className={`${suavity.className} min-[290px]:text-[15rem] md:text-[20rem] text-primary relative -z-10 text-center`}
+        className={`${suavity.className} text-[15rem] md:text-[25rem] text-primary absolute bottom-[20rem] -z-10 text-center`}
       >
         {user?.given_name}
       </p>

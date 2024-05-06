@@ -5,10 +5,10 @@ import { useScroll, useTransform, motion } from "framer-motion";
 import Image from "next/image";
 
 export const ContainerScroll = ({
-  users,
+  vision,
   titleComponent,
 }: {
-  users: {
+  vision: {
     image: string;
   }[];
   titleComponent: string | React.ReactNode;
@@ -54,7 +54,7 @@ export const ContainerScroll = ({
           rotate={rotate}
           translate={translate}
           scale={scale}
-          users={users}
+          vision={vision}
         />
       </div>
     </div>
@@ -78,12 +78,12 @@ export const Card = ({
   rotate,
   scale,
   translate,
-  users,
+  vision,
 }: {
   rotate: any;
   scale: any;
   translate: any;
-  users: {
+  vision: {
     image: string;
   }[];
 }) => {
@@ -98,7 +98,7 @@ export const Card = ({
       className="max-w-5xl -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border-4 border-[#06584e] dark:border-[#f6c445] p-6 bg-[#67ddab] rounded-[30px] shadow-2xl"
     >
       <div className="bg-background h-full w-full rounded-2xl grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 overflow-hidden p-4">
-        {users.map((user, idx: number) => (
+        {vision.map((user, idx: number) => (
           <motion.div
             key={`user-${idx}`}
             className="bg-white rounded-md cursor-pointer relative"
