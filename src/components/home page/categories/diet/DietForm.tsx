@@ -82,7 +82,6 @@ const DietForm = () => {
       );
 
       if (response.status === 200) {
-        // Reset form fields and handle response
         setAge("");
         setHeight("");
         setWeight("");
@@ -96,10 +95,35 @@ const DietForm = () => {
         setSleepPattern("");
         setSmoker("");
         setAlchool("");
-        setResponse("Form submitted successfully!");
+        // setResponse("Form submitted successfully!");
+        const formattedResponse = response.data
+          .replace(/^(\*\*|\n)/gm, "") // Remove leading ** and \n
+          .replace(/\n\s*\*/g, "\n") // Remove * after \n
+          .replace(/\*\*/g, "") // Remove **
+          .replace(/\n{2,}/g, "\n") // Remove extra \n
+          .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // Add style block for anything between ** **
+          .replace(
+            /(\w+):(?![\d])/g,
+            '<br><span style="font-weight: bold; color: #f6c445; font-size: 1.3rem;">$1</span>:'
+          ) // Add line break before headings (excluding numbers)
+          .replace(
+            /(\d+\s+\w+)/g,
+            '<span style="font-style: italic;">$1</span>'
+          ) // Add style block for dates
+          .replace(/Day/g, "<br><hr>Day") // Add line break before "Day"
+          .replace(
+            /Notes/g,
+            '<hr><span style="font-weight: bold; color: #f6c445; font-size: 1.3rem;">Notes</span>'
+          ); // Add line break before "Notes" heading
+
+        setResponse(formattedResponse);
+        localStorage.setItem("dietResponse", JSON.stringify(response.data));
+      } else {
+        throw new Error("Failed to fetch data");
       }
     } catch (error) {
       console.error("Error submitting form:", error);
+      setResponse("Error: Unable to connect to the API");
     } finally {
       setLoading(false);
     }

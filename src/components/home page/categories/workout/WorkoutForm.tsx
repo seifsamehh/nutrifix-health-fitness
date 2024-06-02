@@ -66,7 +66,7 @@ const WorkoutForm = () => {
       const response = await axios.post(
         "https://nutrifix.onrender.com/workout",
         payload,
-        { headers: { "Content-Encoding": "gzip" } } // Using compression
+        { headers: { "Content-Encoding": "gzip" } }
       );
 
       if (response.status === 200) {
